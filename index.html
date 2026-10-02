@@ -160,20 +160,7 @@ privacyButton.addEventListener('click', () => privacyDialog.showModal());
 closePrivacy.addEventListener('click', () => privacyDialog.close());
   </script>
 
-<script>
-(async function loadVisitorCount(){
-  const el=document.getElementById("visitorCount");
-  if(!el)return;
-  try{
-    const res=await fetch("/api/visits",{cache:"no-store",headers:{Accept:"application/json"}});
-    if(!res.ok)throw new Error("Visitor counter unavailable");
-    const data=await res.json();
-    if(typeof data.totalVisits!=="number")throw new Error("Invalid visitor count");
-    el.textContent="Visits: "+data.totalVisits.toLocaleString();
-  }catch{
-    el.textContent="Visits: —";
-  }
-})();
-</script>
+<script src="https://counterapi.com/c.js?ns=hypercards" async></script>
+  <div class="counterapi" key="homepage" startNumber="0" style="display:inline-flex;align-items:center;gap:.35rem"></div>
 </body>
 </html>
